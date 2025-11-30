@@ -52,25 +52,25 @@ const TIMELINE_NODES = [
         date: 'Pre-2024',
         icon: Code2,
         tech: "Java, Algorithms",
-        desc: "Solved 170+ DSA problems. Built the algorithmic mental model necessary for complex system optimization."
+        desc: "Solved 170+ DSA problems."
     },
     {
         id: 'college_blood_bank',
-        title: "Blood Bank Mgmt",
+        title: "Blood Bank Management",
         type: 'foundation',
         date: 'College',
         icon: BrainCircuit,
-        tech: "ANN, ML, DL, Python",
-        desc: "Academic project utilizing Artificial Neural Networks and Deep Learning for advanced management systems."
+        tech: "Django, Python",
+        desc: "Academic project utilizing Django for advanced management systems."
     },
     {
         id: 'college_cust_seg',
-        title: "Cust. Segmentation",
+        title: "Customer Segmentation",
         type: 'foundation',
         date: 'College',
         icon: Database,
-        tech: "Django, Python, ML",
-        desc: "Customer segmentation and purchase prediction system built on the Django framework."
+        tech: "Streamlit, ANN, Python, ML",
+        desc: "Customer segmentation and purchase prediction system built with the Streamlit, Keras, and Tensorflow."
     },
     {
         id: 'pro_genai',
@@ -78,16 +78,16 @@ const TIMELINE_NODES = [
         type: 'ai',
         date: 'Apr 2024',
         icon: Bot,
-        tech: ".NET, React, OpenAI",
+        tech: ".NET, React, Gemini",
         desc: "First professional GenAI project. Built and deployed a content generation feature to production."
     },
     {
         id: 'pro_rec',
-        title: "Rec. Engine",
+        title: "Recommendation Engine",
         type: 'ai',
         date: 'May 2024',
         icon: Network,
-        tech: "Two Tower, Filtering, Python",
+        tech: "Two Tower Architecture, Collaborative Filtering, Python",
         desc: "Implemented Collaborative & Content filtering. Explored Two Tower architecture for high-scale retrieval."
     },
     {
@@ -96,12 +96,12 @@ const TIMELINE_NODES = [
         type: 'ai',
         date: 'Jun 2024',
         icon: Globe,
-        tech: "Elasticsearch, Vectors, Python",
+        tech: "Elasticsearch, Vector Embeddings, Python",
         desc: "Replaced keyword search with semantic capabilities using ElasticSearch as the data and vector source."
     },
     {
         id: 'pro_ml_redux',
-        title: "ML Production",
+        title: "ML in Production",
         type: 'ai',
         date: 'July 2024',
         icon: BrainCircuit,
@@ -110,16 +110,16 @@ const TIMELINE_NODES = [
     },
     {
         id: 'pro_perf',
-        title: "Performance Eng.",
+        title: "Performance Engineering",
         type: 'core',
         date: 'Aug 2024',
         icon: Zap,
         tech: "SQL, EF Core, Governance",
-        desc: "Optimized critical paths: 'Product Publish' & Bulk Import/Export. Tuned SPs. Enforced quality with Governance team."
+        desc: "Optimized critical paths: 'Product Publish' & Bulk Import/Export. Tuned Database SPs. Enforced code quality with Governance team."
     },
     {
         id: 'pro_erp',
-        title: "ERP Bridge",
+        title: "ERP System",
         type: 'backend',
         date: 'Sep 2024',
         icon: Database,
@@ -128,25 +128,25 @@ const TIMELINE_NODES = [
     },
     {
         id: 'pro_tools_1',
-        title: "Workflow Auto",
+        title: "Workflow Automation",
         type: 'devops',
         date: 'Oct 2024',
         icon: Workflow,
-        tech: "Jira API, Git Automation, Python",
+        tech: "Jira API, Git Automation, .Net, Python",
         desc: "Created internal tools to ease developer workloads, automating Jira transitions and Git operations."
     },
     {
         id: 'pro_tools_2',
-        title: "Doc Automation",
+        title: "Automation: Code and API Documentation",
         type: 'devops',
         date: 'Nov 2024',
         icon: Bot,
-        tech: "Deterministic Logic, AI, Python",
+        tech: "Deterministic Logic, AI, Typescript, React",
         desc: "Built a hybrid AI/Logic tool to automatically generate and improve Code & API documentation."
     },
     {
         id: 'pro_cli',
-        title: "Deploy CLI",
+        title: "DevOps CLI",
         type: 'devops',
         date: 'Jan 2025',
         icon: Terminal,
@@ -155,7 +155,7 @@ const TIMELINE_NODES = [
     },
     {
         id: 'pro_nelli_proto',
-        title: "Nelli Prototype",
+        title: "Nelli Agentic AI Prototype",
         type: 'ai',
         date: 'Apr 2025',
         icon: Layers,
@@ -164,21 +164,21 @@ const TIMELINE_NODES = [
     },
     {
         id: 'pro_nelli_prod',
-        title: "Nelli Platform",
+        title: "Nelli Agentic AI Platform",
         type: 'lead',
         date: 'Current',
         icon: Cpu,
-        tech: "MS Agent, MCP, CopilotKit, React",
+        tech: "Microsoft Agent, MCP, CopilotKit, React",
         desc: "Leading 'Nelli'. Architecting end-to-end agent system with MCPs, Gateways, MS Agent Framework, and CopilotKit frontend."
     },
     {
         id: 'hobby_kernel',
-        title: "Kernel Hacking",
+        title: "Mobile Server",
         type: 'hobby',
         date: 'Parallel',
         icon: ShieldCheck,
         tech: "Linux Kernel, Android, Docker, K8s",
-        desc: "Flashed custom Linux kernel on Android to run native Docker/K8s cluster on a phone."
+        desc: "Modified, Compiled and Flashed custom Linux kernel on Android to run native Docker/K8s cluster on a phone."
     }
 ];
 
@@ -217,11 +217,11 @@ const BootTerminal = ({ onComplete }) => {
     useEffect(() => {
         let delay = 0;
         bootText.forEach((line, index) => {
-            delay += Math.random() * 300 + 200; 
+            delay += Math.random() * 100 + 50; 
             setTimeout(() => {
                 setLines(prev => [...prev, line]);
                 if (index === bootText.length - 1) {
-                    setTimeout(onComplete, 800);
+                    setTimeout(onComplete, 300);
                 }
             }, delay);
         });
@@ -518,7 +518,7 @@ const TimelineSection = () => {
                     <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-slate-800 md:hidden" />
 
                     <div className="relative pt-4">
-                        {TIMELINE_NODES.map((node, index) => {
+                        {[...TIMELINE_NODES].reverse().map((node, index) => {
                             const isVisible = filter === 'all' || node.type === filter || (filter === 'core' && ['core', 'backend'].includes(node.type));
                             const isRelated = relatedNodes.includes(node.id);
                             const isHovering = hoveredNode !== null;
@@ -594,7 +594,7 @@ export default function App() {
                 </div>
                 <h1 className="text-4xl md:text-7xl font-bold mb-6 tracking-tight">
                     Suraj Bangade.<br />
-                    <span className={`transition-colors ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>Engineer. Researcher. Builder.</span>
+                    <span className={`transition-colors ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>Engineer. Researcher. Creator.</span>
                 </h1>
                 <p className={`text-lg md:text-xl max-w-2xl mb-8 leading-relaxed ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
                     I am passionate about the craft of <strong>creation</strong> and the pursuit of <strong>optimization</strong>. 
